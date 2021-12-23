@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RatingModule } from './modules/rating/rating.module';
 import { RatingService } from './services/rating/rating.service';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { RatingService } from './services/rating/rating.service';
       logging: true,
     }),
     RatingModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService, RatingService],
