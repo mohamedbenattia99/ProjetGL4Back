@@ -4,36 +4,16 @@ import { Repository } from 'typeorm';
 
 import { UsersEntity } from 'src/entities/users.entity';
 import {UsersDTO} from 'src/dto/users.dto';
+import { BaseService } from '../base/base.service';
 
 @Injectable()
-export class UsersService {
+export class UsersService extends BaseService<UsersEntity> {
     constructor(
         @InjectRepository(UsersEntity)
         private usersRepository: Repository<UsersEntity>,
-    ){}
-
-    async findAll() {
-        return await this.usersRepository.find();
+    ){
+        super(usersRepository)
     }
-
-    async create (data: UsersDTO) {
-        const user = this.usersRepository.create(data);
-        await this.usersRepository.save(data);
-        return user;
-    }
-
-    async findOneUser(id:number) {
-        return await this.usersRepository.findOne({where: {
-            id: id
-        }});
-    }
-
-    async update(id: number, data: Partial<UsersDTO>) {
-        await this.usersRepository.update({id}, data);
-        return await this.usersRepository.findOne({id});
-    }
-
-
-
 
 }
+
