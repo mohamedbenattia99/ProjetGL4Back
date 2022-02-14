@@ -2,7 +2,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { IsEmail } from 'class-validator';
 import { RatingEntity } from './rating.entity';
 import { CommentEntity } from './comment.entity';
-@Entity('user')
+@Entity('users')
 export class UsersEntity {
   @PrimaryGeneratedColumn()
   id: number;

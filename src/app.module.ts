@@ -18,6 +18,8 @@ import { UsersModule } from './modules/users/users.module';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       entities: ['dist/**/*.entity.js'],
+      migrations: ['dist/src/migrations/*{.ts,.js}'],
+      cli: { migrationsDir: 'src/migrations'},
       synchronize: true,
       logging: true,
     }),

@@ -1,15 +1,18 @@
-import { Column, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 import { DatedEntity } from './dated.entity';
 import { UsersEntity } from './users.entity';
 import { GameEntity } from './game.entity';
 
 export class CommentEntity extends DatedEntity {
-  @PrimaryColumn()
-  @ManyToOne(() => UsersEntity, (user) => user.ratings)
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @ManyToOne(() => UsersEntity, (user) => user.comments)
   user: UsersEntity;
-  @PrimaryColumn()
-  @ManyToOne(() => GameEntity, (game) => game.ratings)
+  
+  @ManyToOne(() => GameEntity, (game) => game.comments)
   game: GameEntity;
-  @Column()
-  value: number;
+  
+  @Column({type:"text", nullable:false})
+  description: string ;
 }
