@@ -5,7 +5,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
+@Entity('dated')
 export class DatedEntity {
   @CreateDateColumn({ update: false })
   createdAt: Date;
