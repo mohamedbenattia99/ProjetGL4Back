@@ -11,14 +11,9 @@ import { RatingService } from './services/rating/rating.service';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.POSTGRES_HOST,
-      port: parseInt(<string>process.env.POSTGRES_PORT),
-      username: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DATABASE,
-      entities: ['dist/**/*.entity.js'],
+      url: process.env.DATABASE_URL,
       synchronize: true,
-      logging: true,
+      autoLoadEntities: true
     }),
     RatingModule,
   ],
